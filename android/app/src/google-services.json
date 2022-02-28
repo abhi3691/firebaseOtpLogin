@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "901923004021",
+    "project_id": "fir-otplogin-c2f81",
+    "storage_bucket": "fir-otplogin-c2f81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901923004021:android:4d0d0beadf03aa6de9223c",
+        "android_client_info": {
+          "package_name": "com.firebaseotplogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901923004021-v777oq5o1dlgtuqf72upmvkqmv85g16j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYyLK8XJ_m75QnL8KbjaEM-435UoQezB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901923004021-v777oq5o1dlgtuqf72upmvkqmv85g16j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
