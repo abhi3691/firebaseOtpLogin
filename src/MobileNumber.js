@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
 
-export default function MobileNumber() {
+export default function MobileNumber(props) {
   const [phoneNumber, setPhoneNumber] = useState(null);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Enter Phone Number</Text>
       <TextInput
         autoFocus
+        keyboardType='phone-pad'
         style={styles.input}
         value={phoneNumber}
         onChangeText={setPhoneNumber}
       />
-      <Button title="Sign In With OTP" />
+      <Button title="Sign In With OTP" onPress={() => props.onSubmit(phoneNumber)} />
     </View>
   );
 }

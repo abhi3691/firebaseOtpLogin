@@ -1,17 +1,41 @@
-import React, {useState} from 'react';
-
+import React, { useState } from 'react';
+import { Alert } from 'react-native';
 import VerifyCode from './VerifyCode';
 import MobileNumber from './MobileNumber';
+import auth from '@react-native-firebase/auth'
+export default function MobileLogin({ navigation }) {
+  const [confirm, setConfirm] = useState(null);
 
-export default function MobileLogin() {
-  const [Confirm, setConfirm] = useState(null);
+  const mobileLogin = async (phoneNumber) => {
+    console.log(phoneNumber)
+    auth().signInWithPhoneNumber('+91' + phoneNumber).then((res) => {
+      console.log('response', res)
+      setConfirm(res);
+    })
+      .catch((error) => {
+        console.log('error', error)
+      })
 
-  const mobileLogin = async phoneNumber => {
-    const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
-    setConfirm(confirmation);
   };
+  const confirmVerification = async (code) => {
+    try {
+      await confirm.confirm(code);
 
-  if (confirm) return <VerifyCode />;
+    } catch (error) {
+      Alert.alert('Invalid Code');
+    }
+  };
+  auth().onAuthStateChanged(user => {
+    if (user) {
+      setConfirm(null);
+      navigation.navigate('Home');
+    } else {
+      if (confirm) {
+        Alert.alert('Authentication failed')
+      }
+    }
+  });
+  if (confirm) return <VerifyCode onSubmit={confirmVerification} />;
 
-  return <MobileNumber />;
+  return <MobileNumber onSubmit={mobileLogin} />;
 }

@@ -1,13 +1,16 @@
-import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
 
-export default function VerifyCode() {
+export default function VerifyCode(props) {
+  const [code, setCode] = useState('')
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Enter OTP</Text>
-      <TextInput autoFocus keyboardType="numeric" style={styles.input} />
-      <Button title="Confirm OTP" />
+      <TextInput autoFocus keyboardType="numeric" style={styles.input}
+        value={code}
+        onChangeText={setCode}
+      />
+      <Button title="Confirm OTP" onPress={() => props.onSubmit(code)} />
     </View>
   );
 }
